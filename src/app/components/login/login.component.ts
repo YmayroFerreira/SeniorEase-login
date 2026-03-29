@@ -1,19 +1,18 @@
 import { Component, inject } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ButtonComponent, DividerComponent, TextComponent } from '@senior-ease/ui';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-login',
-    imports: [FormsModule, RouterLink, ButtonComponent, DividerComponent, TextComponent],
+    imports: [FormsModule, ButtonComponent, DividerComponent, TextComponent],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   private authService = inject(AuthService);
-  private router = inject(Router);
 
   email = '';
   password = '';
@@ -25,10 +24,9 @@ export class LoginComponent {
     this.errorMessage = '';
     try {
       await this.authService.signIn(this.email, this.password);
-      this.router.navigate(['/dashboard']);
+      await this.redirectToMainApp();
     } catch (err: any) {
       this.errorMessage = this.friendlyError(err.code);
-    } finally {
       this.loading = false;
     }
   }
@@ -38,12 +36,16 @@ export class LoginComponent {
     this.errorMessage = '';
     try {
       await this.authService.signInWithGoogle();
-      this.router.navigate(['/dashboard']);
+      await this.redirectToMainApp();
     } catch (err: any) {
       this.errorMessage = this.friendlyError(err.code);
-    } finally {
       this.loading = false;
     }
+  }
+
+  private async redirectToMainApp() {
+    const token = await this.authService.getIdToken();
+    window.location.href = `${environment.mainAppUrl}/auth/callback?token=${token}`;
   }
 
   private friendlyError(code: string): string {
