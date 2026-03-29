@@ -1,4 +1,7 @@
 {
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm run build -- --configuration=production",
+  "outputDirectory": "dist/login-mfe",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
