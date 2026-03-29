@@ -69,4 +69,11 @@ export class AuthService {
   sendPasswordReset(email: string) {
     return sendPasswordResetEmail(this.auth, email);
   }
+
+  /** Get the current user's Firebase ID token (JWT) */
+  getIdToken(): Promise<string> {
+    const currentUser = this.auth.currentUser;
+    if (!currentUser) return Promise.reject(new Error('No user signed in.'));
+    return currentUser.getIdToken();
+  }
 }
