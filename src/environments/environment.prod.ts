@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  mainAppUrl: 'https://senior-ease-jet.vercel.app',
   firebaseConfig: {
     apiKey: "AIzaSyCU-4pvIvG4Db7SijxTrHEZjbl12gq1Y5o",
     authDomain: "seniorease-8ca9c.firebaseapp.com",
