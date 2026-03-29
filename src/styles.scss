@@ -1,3 +1,61 @@
+/* ── Senior Ease DS tokens consumed by @senior-ease/ui components ── */
+:root {
+  --ui-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ui-font-size-100: 0.75rem;
+  --ui-font-size-200: 0.875rem;
+  --ui-font-size-300: 1rem;
+  --ui-font-size-400: 1.125rem;
+  --ui-font-size-600: 1.5rem;
+  --ui-font-weight-regular: 400;
+  --ui-font-weight-medium: 500;
+  --ui-font-weight-semibold: 600;
+  --ui-line-height-base: 1.5;
+  --ui-line-height-tight: 1.25;
+
+  --ui-space-1: 0.25rem;
+  --ui-space-2: 0.5rem;
+  --ui-space-3: 0.75rem;
+  --ui-space-4: 1rem;
+  --ui-space-5: 1.25rem;
+  --ui-space-6: 1.5rem;
+  --ui-space-7: 2rem;
+  --ui-space-8: 2.25rem;
+  --ui-space-9: 2.5rem;
+
+  --ui-radius-md: 0.75rem;
+  --ui-radius-lg: 1rem;
+  --ui-radius-pill: 9999px;
+  --ui-radius-round: 9999px;
+  --ui-border-width: 1px;
+  --ui-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
+  --ui-shadow-md: 0 4px 12px rgb(15 23 42 / 0.12);
+
+  --ui-color-primary: #1b4f8a;
+  --ui-color-primary-strong: #0f3460;
+  --ui-color-primary-soft: #eaf1fb;
+  --ui-color-accent: #8b4000;
+  --ui-color-accent-soft: #f5e6da;
+
+  --ui-color-surface: #ffffff;
+  --ui-color-surface-muted: #f8fafc;
+  --ui-color-border: #e0e6ed;
+  --ui-color-text: #1a202c;
+  --ui-color-text-muted: #536070;
+  --ui-color-text-inverse: #ffffff;
+  --ui-color-focus-ring: #1b4f8a;
+
+  --ui-color-success: #0f5c2b;
+  --ui-color-success-soft: #e0f7e9;
+  --ui-color-warning: #7a5000;
+  --ui-color-warning-soft: #fef3c7;
+  --ui-color-danger: #9a1a1a;
+  --ui-color-danger-soft: #fff5f5;
+
+  --ui-layout-sidebar-width: 15rem;
+  --ui-layout-content-width: none;
+  --ui-layout-mobile-nav-height: 4rem;
+}
+
 /* ── Global Reset & Base ── */
 *, *::before, *::after {
   box-sizing: border-box;

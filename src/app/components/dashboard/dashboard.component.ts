@@ -14,7 +14,7 @@ import { ButtonComponent, TextComponent } from '@senior-ease/ui';
 export class DashboardComponent implements OnInit {
   private authService = inject(AuthService);
   private configService = inject(UserConfigService);
-  private router = inject(Router);
+  protected router = inject(Router);
 
   user$ = this.authService.user$;
   config: UserConfig | null = null;
