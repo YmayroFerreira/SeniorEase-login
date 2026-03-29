@@ -1,0 +1,58 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <ui-text element="h1" size="xl" weight="semibold">Sign In</ui-text>
+    <ui-text element="p" tone="muted">Welcome back to SeniorEase</ui-text>
+
+    @if (errorMessage) {
+      <div class="error-banner">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <form class="auth-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+          />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          />
+      </div>
+
+      <ui-button
+        variant="primary"
+        [label]="loading ? 'Signing in...' : 'Sign In'"
+        [disabled]="loading"
+        (buttonClick)="onLogin()"
+      ></ui-button>
+    </form>
+
+    <ui-divider></ui-divider>
+
+    <ui-button
+      variant="secondary"
+      label="Continue with Google"
+      [disabled]="loading"
+      (buttonClick)="onGoogleLogin()"
+    ></ui-button>
+
+    <p class="auth-link">
+      Don't have an account? <a routerLink="/register">Create one</a>
+    </p>
+  </div>
+</div>

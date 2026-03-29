@@ -1,0 +1,13 @@
+<div class="auth-container">
+  @if (user$ | async; as user) {
+    <div class="auth-card auth-card--wide">
+      <ui-text element="h1" size="xl" weight="semibold">Dashboard</ui-text>
+      <ui-text element="p" tone="muted">Welcome, {{ displayName }}</ui-text>
+      <nav class="dashboard-nav">
+        <ui-button variant="secondary" label="Settings" (buttonClick)="router.navigate(['/settings'])"></ui-button>
+        <ui-button variant="secondary" label="Change Password" (buttonClick)="router.navigate(['/change-password'])"></ui-button>
+        <ui-button variant="ghost" label="Sign Out" (buttonClick)="onSignOut()"></ui-button>
+      </nav>
+    </div>
+  }
+</div>
