@@ -1,23 +1,24 @@
 import { Component, inject } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { ButtonComponent, DividerComponent, TextComponent } from '@senior-ease/ui';
 import { environment } from '../../../environments/environment';
 
 @Component({
-    selector: 'app-login',
-    imports: [FormsModule, ButtonComponent, DividerComponent, TextComponent],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+  selector: 'app-login',
+  imports: [FormsModule],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   email = '';
   password = '';
   errorMessage = '';
   loading = false;
+  showPassword = false;
 
   async onLogin() {
     this.loading = true;
@@ -43,6 +44,10 @@ export class LoginComponent {
     }
   }
 
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+
   private async redirectToMainApp() {
     const token = await this.authService.getIdToken();
     window.location.href = `${environment.mainAppUrl}/auth/callback?token=${token}`;
@@ -50,12 +55,12 @@ export class LoginComponent {
 
   private friendlyError(code: string): string {
     const map: Record<string, string> = {
-      'auth/user-not-found': 'No account found with this email.',
-      'auth/wrong-password': 'Incorrect password.',
-      'auth/invalid-email': 'Please enter a valid email address.',
-      'auth/too-many-requests': 'Too many attempts. Please try again later.',
-      'auth/invalid-credential': 'Invalid email or password.',
+      'auth/user-not-found': 'Nenhuma conta encontrada com este e-mail.',
+      'auth/wrong-password': 'Senha incorreta.',
+      'auth/invalid-email': 'Por favor, insira um e-mail válido.',
+      'auth/too-many-requests': 'Muitas tentativas. Tente novamente mais tarde.',
+      'auth/invalid-credential': 'E-mail ou senha inválidos.',
     };
-    return map[code] ?? 'Something went wrong. Please try again.';
+    return map[code] ?? 'Algo deu errado. Tente novamente.';
   }
 }
