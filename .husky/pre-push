@@ -1,0 +1,2 @@
+echo "Rodando testes unitários antes do push..."
+npm test
