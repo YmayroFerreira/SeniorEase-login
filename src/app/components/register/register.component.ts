@@ -112,7 +112,7 @@ export class RegisterComponent {
   }
 
   private async redirectToMainApp() {
-    const token = await this.authService.getIdToken();
+    const token = await this.authService.getIdToken(true);
     window.location.href = `${environment.mainAppUrl}/auth/callback?token=${token}`;
   }
 
