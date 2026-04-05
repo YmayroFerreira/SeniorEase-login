@@ -8,23 +8,26 @@ on:
 
 jobs:
   ci:
-    name: Build Check
+    name: Testes e Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 22
+      - name: Configurar Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Instalar dependências
         run: npm ci --legacy-peer-deps
 
-      - name: Build
+      - name: Rodar testes unitários
+        run: npm test
+
+      - name: Build de produção
         run: npm run build -- --configuration=production
 
   cd:
@@ -34,7 +37,7 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
-      - name: Deploy to Vercel
+      - name: Deploy para Vercel
         run: |
           echo "Branch: ${{ github.ref_name }}"
           if [ "${{ github.ref_name }}" == "main" ]; then
