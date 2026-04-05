@@ -71,9 +71,9 @@ export class AuthService {
   }
 
   /** Get the current user's Firebase ID token (JWT) */
-  getIdToken(): Promise<string> {
+  getIdToken(forceRefresh = false): Promise<string> {
     const currentUser = this.auth.currentUser;
     if (!currentUser) return Promise.reject(new Error('No user signed in.'));
-    return currentUser.getIdToken();
+    return currentUser.getIdToken(forceRefresh);
   }
 }
